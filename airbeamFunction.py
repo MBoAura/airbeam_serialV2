@@ -13,17 +13,17 @@ msg=['System Check','Checking Bluetooth Module.Good','Checking WiFi Module.Good'
 
 #Fonctions de transformation des datas #################################################
 
-def transformationDataOld(data):
+def transformationData(data):
     """Fonction pour la transformation des datas - new firmware"""
     #dataExemple=['Temperature', 'Counts', '8', 'Plantower', 'Counts', '1', 'Airbeam2', 'MAC', '0018961054F1', 'Firmware', 'v11.5.18', '78F', '26C', '299K', '56RH', 'PM1', '3', 'PM2.5', '7', 'PM10', '9']
     data=data.split(sep)
     data.insert(0,datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')) #Insertion de la date et heure
-    data[12]=float(data[12].replace('F',"")) #Temperature F
-    data[13]=float(data[13].replace('C',"")) #Temperature C
-    data[15]=float(data[15].replace('RH',"")) #Humidite
-    data[17]=float(data[17]) #PM1
-    data[19]=float(data[19]) #PM2.5
-    data[21]=float(data[21]) #PM10
+    data[15]=float(data[15].replace('F',"")) #Temperature F
+    data[16]=float(data[16].replace('C',"")) #Temperature C
+    data[18]=float(data[18].replace('RH',"")) #Humidite
+    data[20]=float(data[20]) #PM1
+    data[22]=float(data[22]) #PM2.5
+    data[24]=float(data[24]) #PM10
     #print(data)
     #res={'time':data[0],'MAC':data[9],'tempF':data[12],'tempC':data[13],'hum':data[15],'PM1':data[17],'PM2.5':data[19],'PM10':data[21]}
     res={"tags":{
@@ -32,18 +32,18 @@ def transformationDataOld(data):
                 },
          "time":data[0],
          "fields":{
-                     "F":data[12],
-                     "C":data[13],
-                     "RH":data[15],
-                     "PM1":data[17],
-                     "PM2.5":data[19],
-                     "PM10":data[21]
+                     "F":data[15],
+                     "C":data[16],
+                     "RH":data[18],
+                     "PM1":data[20],
+                     "PM2.5":data[22],
+                     "PM10":data[24]
                     }
          }
     print(res)
     return data,res
     
-def transformationData(data):
+def transformationDataOld(data):
     """Fonction pour la transformation des datas - old airbeam"""
     #dataExemple=AirBeam2MAC: 00189610804D 72F 22C 74RH PM-Amb1:25 PM-Amb2.5:42 PM-Amb10:53 PM1:23 PM2.5:31 PM10:56
     data=data.split(sep)
