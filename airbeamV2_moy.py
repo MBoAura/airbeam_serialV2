@@ -16,7 +16,7 @@ import argparse
 
 import variables #Fichier avec les variables
 import airbeamFunction #Fichier description et fonctions propres à airbeams
-
+sep=' ' #separateur des datas
 tz=pytz.timezone('Europe/Paris')
 deb=datetime.datetime.now()  #Date de début execution du script
 debText=deb.strftime('%Y-%m-%d %H:%M:%S')
@@ -158,7 +158,7 @@ if __name__ == '__main__':
             i=1
             while i<=sampleTime:
                 f=acquisition() #Acquisition des données sur le port serie
-                if len(f)>=30 and f not in airbeamFunction.msg:
+                if len(f.split(sep))==24 and f not in airbeamFunction.msg:
                     print(i)
                     d,r=airbeamFunction.transformationData(f) #Pour les nouveaux firmware airbeam
                     #d,r=airbeamFunction.transformationDataOld(f) #Pour les anciens firmware airbeam
