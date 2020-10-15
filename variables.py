@@ -10,10 +10,10 @@ Created on Tue Dec 18 21:41:29 2018
 #InfluxDB est la base de données qui collecte les résultats des mesures
 
 bddInflux={'airbeam2':
-    {'serveur':'5.149.183.22',
-    'port':8086,
-    'login':'root',
-    'mdp':'root',
+    {'serveur':'',
+    'port':,
+    'login':'',
+    'mdp':'',
     'nom':'airbeam2'},
     }
 
